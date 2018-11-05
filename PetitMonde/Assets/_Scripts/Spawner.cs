@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour {
     {
         int spawnIndex = Random.Range(1,7);
 
-        GameObject victorySpawnPawn = transform.
+        //GameObject victorySpawnPawn = transform.
     }
 
     private void SpawnPlayer()

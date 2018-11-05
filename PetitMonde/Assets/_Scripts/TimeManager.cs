@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour {
+
+    private UIEndGame UIScript;
+
     [Header("Timer Display")]
     [SerializeField]
     private Text timerText;
@@ -21,6 +24,8 @@ public class TimeManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        UIScript = GameObject.FindObjectOfType<UIEndGame>();
+
         wasteArray = null;
         timer = 0f;
         timeSinceLastDestruction = 0f;
@@ -49,7 +54,7 @@ public class TimeManager : MonoBehaviour {
 
         if(timeRemaining <= 0)
         {
-            timerText.text = "Time Out";
+            UIScript.GameOver();
         }
             
     }

@@ -7,10 +7,27 @@ public class UIEndGame : MonoBehaviour {
     public GameObject GameOverScreen;
     public GameObject WinScreen;
 
-    // Update is called once per frame
+    public void GameOver()
+    {
+        if (GameOverScreen.activeSelf == false)
+        {
+            GameOverScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    public void Win()
+    {
+        if (GameOverScreen.activeSelf == false)
+        {
+            WinScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
     void Update()
     {
-
+        /*
         //Game Over
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -30,6 +47,6 @@ public class UIEndGame : MonoBehaviour {
                 Time.timeScale = 0;
             }
         }
-
+        */
     }
 }
