@@ -9,6 +9,8 @@ public class PlayerMovementScript : MonoBehaviour {
     private float maxSpeed;
     [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private bool canJump = false;
 
     private Vector3 moveDirection;
     private Camera mainCamera;
@@ -32,7 +34,7 @@ public class PlayerMovementScript : MonoBehaviour {
         moveDirection = (v * cameraForwardDir + h * mainCamera.transform.right).normalized;
 
         //Jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(transform.up * jumpForce);
         }
