@@ -20,9 +20,17 @@ public class ScoreManager : MonoBehaviour {
         destructionScore = 0f;
         scoreJauge.fillAmount = 0f;
 	}
-	
+
+    public void UpdateScore(float buildingScore)
+    {
+        destructionScore += buildingScore;
+        scoreJauge.fillAmount = destructionScore / maxDestruction ;
+    }
 	// Update is called once per frame
-	void Update () {
-		
+	void LateUpdate () {
+		if(destructionScore == maxDestruction)
+        {
+            Debug.Log("You Suck");
+        }
 	}
 }

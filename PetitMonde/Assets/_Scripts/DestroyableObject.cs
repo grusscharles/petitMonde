@@ -5,12 +5,17 @@ using UnityEngine;
 public class DestroyableObject : MonoBehaviour {
     [SerializeField]
     private GameObject destroyedPrefab;
+    [Header("Destruction Score")]
+    [SerializeField]
+    private float buildingScore = 0f;
 
     private TimeManager timeManager;
+    private ScoreManager scoreManager;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         timeManager = GameObject.FindObjectOfType<TimeManager>();
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -22,6 +27,8 @@ public class DestroyableObject : MonoBehaviour {
             GameObject destroyedObject = Instantiate(destroyedPrefab, gameObject.transform.position, gameObject.transform.rotation);
             destroyedObject.transform.localScale = gameObject.transform.localScale;
             Destroy(gameObject);
+
+            scoreManager.UpdateScore(buildingScore);
         }
     }
 

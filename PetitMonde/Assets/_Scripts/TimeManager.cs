@@ -2,8 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour {
+    [Header("Timer Display")]
+    [SerializeField]
+    private Text timerText;
+    [SerializeField]
+    private float initialTime = 180f;
 
     private float timer;
     [HideInInspector]
@@ -23,11 +29,29 @@ public class TimeManager : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
         timeSinceLastDestruction += Time.deltaTime;
+
+        DisplayTime();
+        
         //Destroy Waste
         if (checkWaste)
         {
             DestroyWaste();
         }
+      
+    }
+
+    private void DisplayTime()
+    {
+        float timeRemaining = initialTime - timer;
+        int displayMinutes = (int)(timeRemaining / 60);
+        int displaySeconds = (int) timeRemaining % 60;
+        timerText.text = displayMinutes.ToString() + " : " + displaySeconds.ToString();  
+
+        if(timeRemaining <= 0)
+        {
+            timerText.text = "Time Out";
+        }
+            
     }
 
     private void DestroyWaste()
