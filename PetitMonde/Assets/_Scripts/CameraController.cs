@@ -20,12 +20,16 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
+        //follow player
         transform.position = player.transform.position + offset;
+        
+        //stay on radius
         float posMag = transform.position.magnitude;
         transform.position = (distanceToCenter / posMag) * transform.position;
 
-        //transform.LookAt(player.transform);
+        transform.LookAt(player.transform);
 
+        /*
         float tetaCam = Mathf.Acos(transform.position.x / transform.position.magnitude);
         float tetaPlayer = Mathf.Acos(player.transform.position.x / player.transform.position.magnitude);
         float camAngle = 0.5f * (Mathf.PI - tetaPlayer + tetaCam);
