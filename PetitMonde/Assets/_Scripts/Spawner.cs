@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
     private List<Transform> spawnPointsList;
+    [SerializeField]
+    private GameObject victoryPrefab;
+    [SerializeField]
+    private GameObject playerPrefab;
+    private GameObject planet;
+    private int victorySpawnIndex;
+    private Transform victorySpawnPoint;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        planet = GameObject.FindGameObjectWithTag("planet");
         spawnPointsList = new List<Transform>();
         //Initialize List
         for (int i = 0; i < transform.childCount; i++)
@@ -21,18 +29,24 @@ public class Spawner : MonoBehaviour {
 
     private void SpawnVictory()
     {
-        int spawnIndex = Random.Range(1,7);
+        victorySpawnIndex = Random.Range(0,6);
 
-        GameObject victorySpawnPawn = transform.
+        victorySpawnPoint = transform.GetChild(victorySpawnIndex);
+        Instantiate(victoryPrefab, victorySpawnPoint.position, victorySpawnPoint.rotation);
     }
 
     private void SpawnPlayer()
     {
-        Debug.Log("hey");
+        foreach (Transform spawnPoint in spawnPointsList)
+        {
+            float distanceToVictory = (victorySpawnPoint.position - spawnPoint.position).magnitude;
+
+            if(Mathf.Abs(distanceToVictory - planet.transform.lossyScale.x) < 0.5f)
+            {
+                Debug.Log("player");
+                Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
