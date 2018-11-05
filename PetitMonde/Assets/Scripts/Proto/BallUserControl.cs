@@ -20,7 +20,6 @@ namespace UnityStandardAssets.Vehicles.Ball
             // Set up the reference.
             ball = GetComponent<Ball>();
 
-
             // get the transform of the main camera
             if (Camera.main != null)
             {
