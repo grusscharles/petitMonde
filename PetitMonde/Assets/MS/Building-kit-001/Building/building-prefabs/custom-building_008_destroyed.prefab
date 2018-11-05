@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114650548307615904}
   m_Layer: 0
   m_Name: custom-building_008_destroyed
-  m_TagString: Untagged
+  m_TagString: waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
