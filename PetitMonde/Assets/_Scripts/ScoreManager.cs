@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
+    private UIEndGame UIScript;
+
     [Header("Score Values")]
     [HideInInspector]
     public float destructionScore;
@@ -17,6 +19,8 @@ public class ScoreManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        UIScript = GameObject.FindObjectOfType<UIEndGame>();
+
         destructionScore = 0f;
         scoreJauge.fillAmount = 0f;
 	}
@@ -30,7 +34,7 @@ public class ScoreManager : MonoBehaviour {
 	void LateUpdate () {
 		if(destructionScore == maxDestruction)
         {
-            Debug.Log("You Suck");
+            UIScript.GameOver();
         }
 	}
 }
