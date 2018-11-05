@@ -1430,6 +1430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
+  player: {fileID: 1655969549842726}
 --- !u!114 &114252378065210296
 MonoBehaviour:
   m_ObjectHideFlags: 1

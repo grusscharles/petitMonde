@@ -1697,6 +1697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
+  player: {fileID: 2136722257}
 --- !u!4 &1513244148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4484140829674764, guid: bb8d8c1bb0e2b094e9b318bbb56d1c95,
